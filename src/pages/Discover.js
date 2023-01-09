@@ -1,5 +1,3 @@
 export default function Discover() {
-    return(
-        <div>Discover<div/>
-    )
+  return <div>Discover</div>;
 }

@@ -1,5 +1,3 @@
 export default function Wallet() {
-    return(
-        <div>Wallet<div/>
-    )
+  return <div>Wallet</div>;
 }
