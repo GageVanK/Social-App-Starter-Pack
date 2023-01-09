@@ -129,7 +129,7 @@ export default function MantineHeader() {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Typing React Game"
+        title="DeSo Template App"
         className={classes.hiddenDesktop}
         zIndex={1000000}
       >
@@ -141,9 +141,6 @@ export default function MantineHeader() {
 
           <Link to="/" className={classes.link}>
             Home
-          </Link>
-          <Link to="/highScores" className={classes.link}>
-            High Scores
           </Link>
 
           <Divider
