@@ -14,7 +14,22 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import MantineThemeButton from "../Components/MantineThemeButton";
-import { IconSearch } from "@tabler/icons";
+import {
+  IconBellRinging,
+  IconSettings,
+  IconReceipt2,
+  IconHome2,
+  IconUser,
+  IconDeviceDesktopAnalytics,
+  IconMessages,
+  IconSearch,
+} from "@tabler/icons";
+import { useState } from "react";
+import Deso from "deso-protocol";
+import { PublicKey } from "../State/App.state";
+import { useRecoilState } from "recoil";
+
+const deso = new Deso();
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -91,7 +106,7 @@ export default function MantineHeader() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const { classes, theme } = useStyles();
-
+  const [publicKey, setPublicKey] = useRecoilState(PublicKey);
   return (
     <Box pb={5}>
       <Header height={60} px="md">
@@ -119,7 +134,30 @@ export default function MantineHeader() {
 
           <Group className={classes.hiddenMobile}>
             <MantineThemeButton />
-            <Button variant="default">Log in</Button>
+
+            {publicKey ? (
+              <Button
+                variant="default"
+                onClick={async () => {
+                  await deso.identity.logout(publicKey);
+                  // eslint-disable-next-line no-restricted-globals
+                  location.reload();
+                }}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button
+                variant="default"
+                onClick={async () => {
+                  await deso.identity.login(2);
+                  const loggedInUserKey = deso.identity.getUserKey();
+                  setPublicKey(loggedInUserKey);
+                }}
+              >
+                Login
+              </Button>
+            )}
           </Group>
 
           <Burger
@@ -136,6 +174,7 @@ export default function MantineHeader() {
         size="100%"
         padding="md"
         title="DeSo Template App"
+        size="md"
         className={classes.hiddenDesktop}
         zIndex={1000000}
       >
@@ -146,7 +185,46 @@ export default function MantineHeader() {
           />
 
           <Link to="/" className={classes.link}>
-            Home
+            <IconHome2 className={classes.linkIcon} />
+            <Text sx={{ marginLeft: 10 }} align="center">
+              Home
+            </Text>
+          </Link>
+          <Link to="/profile" className={classes.link}>
+            <IconUser />
+            <Text sx={{ marginLeft: 10 }} align="center">
+              Profile
+            </Text>
+          </Link>
+          <Link to="/discover" className={classes.link}>
+            <IconDeviceDesktopAnalytics />
+            <Text sx={{ marginLeft: 10 }} align="center">
+              Discover
+            </Text>
+          </Link>
+          <Link to="/messages" className={classes.link}>
+            <IconMessages />
+            <Text sx={{ marginLeft: 10 }} align="center">
+              Messages
+            </Text>
+          </Link>
+          <Link to="/notifications" className={classes.link}>
+            <IconBellRinging />
+            <Text sx={{ marginLeft: 10 }} align="center">
+              Notifications
+            </Text>
+          </Link>
+          <Link to="/wallet" className={classes.link}>
+            <IconReceipt2 />
+            <Text sx={{ marginLeft: 10 }} align="center">
+              Wallet
+            </Text>
+          </Link>
+          <Link to="/settings" className={classes.link}>
+            <IconSettings />
+            <Text sx={{ marginLeft: 10 }} align="center">
+              Settings
+            </Text>
           </Link>
 
           <Divider
@@ -156,7 +234,6 @@ export default function MantineHeader() {
 
           <Group position="center" grow pb="xl" px="md">
             <MantineThemeButton />
-            <Button variant="default">Log in</Button>
           </Group>
         </ScrollArea>
       </Drawer>
