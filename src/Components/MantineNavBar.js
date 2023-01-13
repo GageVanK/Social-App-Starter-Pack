@@ -14,7 +14,6 @@ import { useState } from "react";
 const useStyles = createStyles((theme, _params, getRef) => {
   const icon = getRef("icon");
   return {
-    
     link: {
       ...theme.fn.focusStyles(),
       display: "flex",
