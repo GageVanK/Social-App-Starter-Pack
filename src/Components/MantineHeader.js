@@ -16,12 +16,9 @@ import { useDisclosure } from "@mantine/hooks";
 import MantineThemeButton from "../Components/MantineThemeButton";
 import {
   IconBellRinging,
-  IconSettings,
-  IconReceipt2,
   IconHome2,
   IconUser,
   IconDeviceDesktopAnalytics,
-  IconMessages,
   IconSearch,
 } from "@tabler/icons";
 

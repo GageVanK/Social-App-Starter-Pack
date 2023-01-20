@@ -1,11 +1,8 @@
 import {
   IconBellRinging,
-  IconSettings,
-  IconReceipt2,
   IconHome2,
   IconUser,
   IconDeviceDesktopAnalytics,
-  IconMessages,
 } from "@tabler/icons";
 import { Navbar, createStyles } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
