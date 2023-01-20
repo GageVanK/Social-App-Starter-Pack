@@ -1,12 +1,4 @@
-import {
-  Grid,
-  Paper,
-  Center,
-  Divider,
-  Text,
-  Space,
-  Group,
-} from "@mantine/core";
+import { Paper, Center, Divider, Text, Space } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { TwitchPlayer } from "react-twitch-embed";
 import { useRef } from "react";
@@ -31,14 +23,7 @@ export default function Discover() {
         labelPosition="center"
       />
       <Space h="xl" />
-      <Carousel
-        slideGap="md"
-        controlsOffset="xs"
-        controlSize={33}
-        loop
-        draggable={true}
-        withIndicators
-      >
+      <Carousel controlSize={33} loop draggable={true} withIndicators>
         <Carousel.Slide>
           <Center>
             <Paper shadow="xl" radius="md" p="xs">
