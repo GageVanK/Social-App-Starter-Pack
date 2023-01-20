@@ -34,11 +34,11 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                Tarik
+                Marved
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="tarik"
+                channel="Marved6"
                 width={333}
                 autoplay
                 muted
@@ -58,11 +58,11 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                Shroud
+                Hiko
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="Shroud"
+                channel="Hiko"
                 width={333}
                 autoplay
                 muted
@@ -82,11 +82,11 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                Aceu
+                A2Guapo
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="aceu"
+                channel="a2guapo"
                 autoplay
                 muted
                 width={333}
@@ -130,11 +130,11 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                Shanks
+                Maya
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="shanks_ttv"
+                channel="Maya"
                 width={333}
                 autoplay
                 muted
