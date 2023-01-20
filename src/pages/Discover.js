@@ -1,4 +1,13 @@
-import { Grid, Paper, Center, Divider, Text, Space } from "@mantine/core";
+import {
+  Grid,
+  Paper,
+  Center,
+  Divider,
+  Text,
+  Space,
+  Group,
+} from "@mantine/core";
+import { Carousel } from "@mantine/carousel";
 import { TwitchPlayer } from "react-twitch-embed";
 import { useRef } from "react";
 
@@ -22,8 +31,15 @@ export default function Discover() {
         labelPosition="center"
       />
       <Space h="xl" />
-      <Grid grow>
-        <Grid.Col span={4}>
+      <Carousel
+        slideGap="md"
+        controlsOffset="xs"
+        controlSize={33}
+        loop
+        draggable={true}
+        withIndicators
+      >
+        <Carousel.Slide>
           <Center>
             <Paper shadow="xl" radius="md" p="xs">
               <Text
@@ -33,21 +49,21 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                shanks_ttv
+                Tarik
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="shanks_ttv"
+                channel="tarik"
+                width={333}
                 autoplay
                 muted
-                width={333}
                 onReady={handleReady}
                 id="1"
               />
             </Paper>
           </Center>
-        </Grid.Col>
-        <Grid.Col span={4}>
+        </Carousel.Slide>
+        <Carousel.Slide>
           <Center>
             <Paper shadow="xl" radius="md" p="xs">
               <Text
@@ -57,21 +73,21 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                GMHikaru
+                Shroud
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="GMHikaru"
+                channel="Shroud"
+                width={333}
                 autoplay
                 muted
-                width={333}
                 onReady={handleReady}
                 id="2"
               />
             </Paper>
           </Center>
-        </Grid.Col>
-        <Grid.Col span={4}>
+        </Carousel.Slide>
+        <Carousel.Slide>
           <Center>
             <Paper shadow="xl" radius="md" p="xs">
               <Text
@@ -81,11 +97,11 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                sgares
+                Aceu
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="sgares"
+                channel="aceu"
                 autoplay
                 muted
                 width={333}
@@ -94,8 +110,8 @@ export default function Discover() {
               />
             </Paper>
           </Center>
-        </Grid.Col>
-        <Grid.Col span={4}>
+        </Carousel.Slide>
+        <Carousel.Slide>
           <Center>
             <Paper shadow="xl" radius="md" p="xs">
               <Text
@@ -105,21 +121,21 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                shroud
+                Kenny Beats
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="shroud"
+                channel="kennybeats"
+                width={333}
                 autoplay
                 muted
-                width={333}
                 onReady={handleReady}
                 id="4"
               />
             </Paper>
           </Center>
-        </Grid.Col>
-        <Grid.Col span={4}>
+        </Carousel.Slide>
+        <Carousel.Slide>
           <Center>
             <Paper shadow="xl" radius="md" p="xs">
               <Text
@@ -129,21 +145,21 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                subroza
+                Shanks
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="subroza"
+                channel="shanks_ttv"
+                width={333}
                 autoplay
                 muted
-                width={333}
                 onReady={handleReady}
                 id="5"
               />
             </Paper>
           </Center>
-        </Grid.Col>
-      </Grid>
+        </Carousel.Slide>
+      </Carousel>
     </>
   );
 }
