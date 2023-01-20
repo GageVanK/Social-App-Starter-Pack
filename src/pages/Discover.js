@@ -23,7 +23,7 @@ export default function Discover() {
         labelPosition="center"
       />
       <Space h="xl" />
-      <Carousel controlSize={33} loop draggable={true} withIndicators>
+      <Carousel controlSize={33} loop draggable={false} withIndicators>
         <Carousel.Slide>
           <Center>
             <Paper shadow="xl" radius="md" p="xs">
