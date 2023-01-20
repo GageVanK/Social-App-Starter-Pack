@@ -77,10 +77,7 @@ const data = [
   { link: "/", label: "Home", icon: IconHome2 },
   { link: "/profile", label: "Profile", icon: IconUser },
   { link: "/discover", label: "Discover", icon: IconDeviceDesktopAnalytics },
-  { link: "/messages", label: "Messages", icon: IconMessages },
   { link: "/notifications", label: "Notifications", icon: IconBellRinging },
-  { link: "/wallet", label: "Wallet", icon: IconReceipt2 },
-  { link: "/settings", label: "Settings", icon: IconSettings },
 ];
 
 export default function MantineNavBar() {

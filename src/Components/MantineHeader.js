@@ -201,28 +201,11 @@ export default function MantineHeader() {
               Discover
             </Text>
           </Link>
-          <Link to="/messages" className={classes.link}>
-            <IconMessages />
-            <Text sx={{ marginLeft: 10 }} align="center">
-              Messages
-            </Text>
-          </Link>
+
           <Link to="/notifications" className={classes.link}>
             <IconBellRinging />
             <Text sx={{ marginLeft: 10 }} align="center">
               Notifications
-            </Text>
-          </Link>
-          <Link to="/wallet" className={classes.link}>
-            <IconReceipt2 />
-            <Text sx={{ marginLeft: 10 }} align="center">
-              Wallet
-            </Text>
-          </Link>
-          <Link to="/settings" className={classes.link}>
-            <IconSettings />
-            <Text sx={{ marginLeft: 10 }} align="center">
-              Settings
             </Text>
           </Link>
 
