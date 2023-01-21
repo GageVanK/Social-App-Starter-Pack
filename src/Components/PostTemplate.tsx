@@ -63,116 +63,112 @@ export const PostsTemplate = ({ post, publicKey }: PostTemplateProps) => {
   };
 
   return (
-    <Paper
-      m="md"
-      shadow="lg"
-      radius="xl"
-      p="xl"
-      withBorder
-      className={classes.comment}
-    >
-      <Group>
-        <Space w="xs" />
-        <Avatar size={33} radius={33} src={pic} />
-        <Text weight="bold" size="sm">
-          {username}
-        </Text>
-      </Group>
+    <Center>
+      <Paper
+        m="md"
+        shadow="lg"
+        radius="xl"
+        p="xl"
+        withBorder
+        className={classes.comment}
+      >
+        <Group>
+          <Space w="xs" />
+          <Avatar size={33} radius={33} src={pic} />
+          <Text weight="bold" size="sm">
+            {username}
+          </Text>
+        </Group>
 
-      <TypographyStylesProvider>
-        <Text align="center" size="md" className={classes.body}>
-          {post.Body}
-        </Text>
-      </TypographyStylesProvider>
+        <TypographyStylesProvider>
+          <Text align="center" size="md" className={classes.body}>
+            {post.Body}
+          </Text>
+        </TypographyStylesProvider>
 
-      <Space h="md" />
+        <Space h="md" />
 
-      {post.ImageURLs && (
-        <div
-          style={{
-            width: 333,
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          <Image
-            src={post.ImageURLs[0]}
-            radius="md"
-            alt="post-image"
-            width="100%"
-          />
-        </div>
-      )}
+        {post.ImageURLs && (
+          <Group position="center">
+            <Image
+              src={post.ImageURLs[0]}
+              radius="md"
+              alt="post-image"
+              width={333}
+            />
+          </Group>
+        )}
 
-      <Space h="md" />
+        <Space h="md" />
 
-      <Center>
-        <Tooltip
-          transition="slide-down"
-          withArrow
-          position="bottom"
-          label="Like"
-          transitionDuration={444}
-        >
-          <ActionIcon variant="subtle" radius="md" size={36}>
-            <IconHeart size={18} stroke={1.5} />
-          </ActionIcon>
-        </Tooltip>
-        <Text size="xs" color="dimmed">
-          {post.LikeCount}
-        </Text>
+        <Center>
+          <Tooltip
+            transition="slide-down"
+            withArrow
+            position="bottom"
+            label="Like"
+            transitionDuration={444}
+          >
+            <ActionIcon variant="subtle" radius="md" size={36}>
+              <IconHeart size={18} stroke={1.5} />
+            </ActionIcon>
+          </Tooltip>
+          <Text size="xs" color="dimmed">
+            {post.LikeCount}
+          </Text>
 
-        <Space w="sm" />
+          <Space w="sm" />
 
-        <Tooltip
-          transition="slide-down"
-          withArrow
-          position="bottom"
-          label="Repost"
-          transitionDuration={444}
-        >
-          <ActionIcon variant="subtle" radius="md" size={36}>
-            <IconRecycle size={18} stroke={1.5} />
-          </ActionIcon>
-        </Tooltip>
-        <Text size="xs" color="dimmed">
-          {post.RepostCount}
-        </Text>
+          <Tooltip
+            transition="slide-down"
+            withArrow
+            position="bottom"
+            label="Repost"
+            transitionDuration={444}
+          >
+            <ActionIcon variant="subtle" radius="md" size={36}>
+              <IconRecycle size={18} stroke={1.5} />
+            </ActionIcon>
+          </Tooltip>
+          <Text size="xs" color="dimmed">
+            {post.RepostCount}
+          </Text>
 
-        <Space w="sm" />
+          <Space w="sm" />
 
-        <Tooltip
-          transition="slide-down"
-          withArrow
-          position="bottom"
-          label="Diamonds"
-          transitionDuration={444}
-        >
-          <ActionIcon variant="subtle" radius="md" size={36}>
-            <IconDiamond size={18} stroke={1.5} />
-          </ActionIcon>
-        </Tooltip>
-        <Text size="xs" color="dimmed">
-          {post.DiamondCount}
-        </Text>
+          <Tooltip
+            transition="slide-down"
+            withArrow
+            position="bottom"
+            label="Diamonds"
+            transitionDuration={444}
+          >
+            <ActionIcon variant="subtle" radius="md" size={36}>
+              <IconDiamond size={18} stroke={1.5} />
+            </ActionIcon>
+          </Tooltip>
+          <Text size="xs" color="dimmed">
+            {post.DiamondCount}
+          </Text>
 
-        <Space w="sm" />
+          <Space w="sm" />
 
-        <Tooltip
-          transition="slide-down"
-          withArrow
-          position="bottom"
-          label="Comments"
-          transitionDuration={444}
-        >
-          <ActionIcon variant="subtle" radius="md" size={36}>
-            <IconMessageCircle size={18} stroke={1.5} />
-          </ActionIcon>
-        </Tooltip>
-        <Text size="xs" color="dimmed">
-          {post.CommentCount}
-        </Text>
-      </Center>
-    </Paper>
+          <Tooltip
+            transition="slide-down"
+            withArrow
+            position="bottom"
+            label="Comments"
+            transitionDuration={444}
+          >
+            <ActionIcon variant="subtle" radius="md" size={36}>
+              <IconMessageCircle size={18} stroke={1.5} />
+            </ActionIcon>
+          </Tooltip>
+          <Text size="xs" color="dimmed">
+            {post.CommentCount}
+          </Text>
+        </Center>
+      </Paper>
+    </Center>
   );
 };

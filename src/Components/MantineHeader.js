@@ -11,6 +11,7 @@ import {
   Drawer,
   ScrollArea,
   Autocomplete,
+  Space,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import MantineThemeButton from "../Components/MantineThemeButton";
@@ -108,13 +109,16 @@ export default function MantineHeader() {
     <Box pb={5}>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
-          <Text
-            component={Link}
-            to="/"
-            sx={{ fontWeight: "bold", fontSize: 22, lineHeight: 1.4 }}
-          >
-            Waves
-          </Text>
+          <Group>
+            <Space w="sm" />
+            <Text
+              component={Link}
+              to="/"
+              sx={{ fontWeight: "bold", fontSize: 22, lineHeight: 1.4 }}
+            >
+              Waves
+            </Text>
+          </Group>
 
           <Group
             sx={{ height: "100%" }}

@@ -5,7 +5,7 @@ import {
   Text,
   Space,
   Title,
-  Group,
+  
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { TwitchPlayer } from "react-twitch-embed";
