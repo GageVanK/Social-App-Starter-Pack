@@ -16,12 +16,16 @@ import {
   TextInput,
   Button,
   Image,
+  Flex,
+  CopyButton,
 } from "@mantine/core";
 import {
   IconHeart,
   IconDiamond,
   IconRecycle,
   IconMessageCircle,
+  IconCopy,
+  IconCheck,
 } from "@tabler/icons";
 import { useRecoilValue } from "recoil";
 
@@ -75,91 +79,113 @@ export default function Home() {
 
   return (
     <>
-      {publicKey ? (
+      <Group position="center">
+        {publicKey ? (
+          <Group position="center">
+            <Paper shadow="xl" p="xl" withBorder>
+              <Flex
+                mih={50}
+                gap="xl"
+                justify="center"
+                align="center"
+                direction="row"
+                wrap="nowrap"
+              >
+                <Avatar
+                  size={44}
+                  radius={33}
+                  src={deso.user.getSingleProfilePicture(publicKey)}
+                />
+                <TextInput
+                  variant="unstyled"
+                  placeholder="Let them hear your voice!"
+                  radius="md"
+                  size="xl"
+                  value={create}
+                  onChange={(e) => {
+                    setPost(e.target.value);
+                  }}
+                  className="ml-2 min-w-[400px] min-h-[50px] text-black"
+                />
+
+                <Space h="md" />
+                <Group position="right">
+                  <Button
+                    variant="outline"
+                    onClick={async () => {
+                      if (!create) {
+                        console.log(
+                          "Create state is empty, cannot submit post."
+                        );
+                        return;
+                      }
+                      try {
+                        await deso.posts.submitPost({
+                          UpdaterPublicKeyBase58Check: publicKey,
+                          BodyObj: {
+                            Body: create,
+                            VideoURLs: [],
+                            ImageURLs: [],
+                          },
+                        });
+                        setPost("");
+                        console.log("Post submitted successfully!");
+                      } catch (error) {
+                        console.log("Error submitting post: ", error);
+                      }
+                    }}
+                  >
+                    Create
+                  </Button>
+                </Group>
+              </Flex>
+            </Paper>
+          </Group>
+        ) : (
+          <Center>
+            <Paper shadow="xl" p="xl" withBorder>
+              <Flex
+                mih={50}
+                gap="xl"
+                justify="center"
+                align="center"
+                direction="row"
+                wrap="nowrap"
+              >
+                <Avatar size={44} radius={33} />
+                <TextInput
+                  variant="unstyled"
+                  placeholder="Let them hear your voice!"
+                  radius="md"
+                  size="xl"
+                  className="ml-2 min-w-[400px] min-h-[50px] text-black"
+                />
+
+                <Space h="md" />
+                <Group position="right">
+                  <Tooltip
+                    transition="slide-up"
+                    transitionDuration={444}
+                    label="Login to Create!"
+                  >
+                    <Button
+                      data-disabled
+                      sx={{ "&[data-disabled]": { pointerEvents: "all" } }}
+                      onClick={(event) => event.preventDefault()}
+                    >
+                      Create
+                    </Button>
+                  </Tooltip>
+                </Group>
+              </Flex>
+            </Paper>
+          </Center>
+        )}
+      </Group>
+      <Space h="md" />
+
+      {feed.map((post, index) => (
         <Group position="center">
-          <Paper shadow="xl" radius="xl" p="xl">
-            <Avatar
-              size={44}
-              radius={33}
-              src={deso.user.getSingleProfilePicture(publicKey)}
-            />
-            <TextInput
-              variant="unstyled"
-              placeholder="Let them hear your voice!"
-              radius="md"
-              size="xl"
-              value={create}
-              onChange={(e) => {
-                setPost(e.target.value);
-              }}
-              className="ml-2 min-w-[400px] min-h-[50px] text-black"
-            />
-
-            <Space h="md" />
-            <Group position="right">
-              <Button
-                variant="outline"
-                onClick={async () => {
-                  if (!create) {
-                    console.log("Create state is empty, cannot submit post.");
-                    return;
-                  }
-                  try {
-                    await deso.posts.submitPost({
-                      UpdaterPublicKeyBase58Check: publicKey,
-                      BodyObj: {
-                        Body: create,
-                        VideoURLs: [],
-                        ImageURLs: [],
-                      },
-                    });
-                    setPost("");
-                    console.log("Post submitted successfully!");
-                  } catch (error) {
-                    console.log("Error submitting post: ", error);
-                  }
-                }}
-              >
-                Create
-              </Button>
-            </Group>
-          </Paper>
-        </Group>
-      ) : (
-        <Center>
-          <Paper shadow="xl" radius="xl" p="xl">
-            <Avatar size={44} radius={33} />
-            <TextInput
-              variant="unstyled"
-              placeholder="Let them hear your voice!"
-              radius="md"
-              size="xl"
-              className="ml-2 min-w-[400px] min-h-[50px] text-black"
-            />
-
-            <Space h="md" />
-            <Group position="right">
-              <Tooltip
-                transition="slide-up"
-                transitionDuration={444}
-                label="Login to Create!"
-              >
-                <Button
-                  data-disabled
-                  sx={{ "&[data-disabled]": { pointerEvents: "all" } }}
-                  onClick={(event) => event.preventDefault()}
-                >
-                  Create
-                </Button>
-              </Tooltip>
-            </Group>
-          </Paper>
-        </Center>
-      )}
-
-      <div>
-        <Space h="md" />
-        {feed.map((post, index) => (
           <Paper
             m="md"
             shadow="lg"
@@ -172,15 +198,38 @@ export default function Home() {
             <Group>
               <Space w="xs" />
               <Avatar
-                size={33}
+                size={44}
                 radius={33}
                 src={deso.user.getSingleProfilePicture(
                   post.PosterPublicKeyBase58Check
                 )}
               />
+
               <Text weight="bold" size="sm">
                 {_.get(post, "ProfileEntryResponse.Username", "anon")}
               </Text>
+              <CopyButton
+                value={post.PosterPublicKeyBase58Check}
+                timeout={2000}
+              >
+                {({ copied, copy }) => (
+                  <Tooltip
+                    label={copied ? "Copied Public Key" : "Copy Public Key"}
+                    withArrow
+                    position="right"
+                    transitionDuration={444}
+                    transition="slide-right"
+                  >
+                    <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
+                      {copied ? (
+                        <IconCheck size={14} />
+                      ) : (
+                        <IconCopy size={14} />
+                      )}
+                    </ActionIcon>
+                  </Tooltip>
+                )}
+              </CopyButton>
             </Group>
 
             <TypographyStylesProvider>
@@ -196,7 +245,7 @@ export default function Home() {
                   src={post.ImageURLs[0]}
                   radius="md"
                   alt="post-image"
-                  width={555}
+                  width={333}
                 />
               </Center>
             )}
@@ -265,8 +314,8 @@ export default function Home() {
               </Text>
             </Center>
           </Paper>
-        ))}
-      </div>
+        </Group>
+      ))}
     </>
   );
 }
