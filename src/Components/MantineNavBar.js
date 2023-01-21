@@ -107,7 +107,7 @@ export default function MantineNavBar() {
       p="md"
       hiddenBreakpoint="sm"
       hidden={!opened}
-      width={{ sm: 200, lg: 222 }}
+      width={{ sm: 200, lg: 300 }}
     >
       <Navbar.Section grow mt="xl">
         {links}
