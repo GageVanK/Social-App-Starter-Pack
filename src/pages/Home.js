@@ -79,109 +79,106 @@ export default function Home() {
 
   return (
     <>
-      <Group position="center">
-        {publicKey ? (
-          <Group position="center">
-            <Paper shadow="xl" p="xl" withBorder>
-              <Flex
-                mih={50}
-                gap="xl"
-                justify="center"
-                align="center"
-                direction="row"
-                wrap="nowrap"
-              >
-                <Avatar
-                  size={44}
-                  radius={33}
-                  src={deso.user.getSingleProfilePicture(publicKey)}
-                />
-                <TextInput
-                  variant="unstyled"
-                  placeholder="Let them hear your voice!"
-                  radius="md"
-                  size="xl"
-                  value={create}
-                  onChange={(e) => {
-                    setPost(e.target.value);
-                  }}
-                  className="ml-2 min-w-[400px] min-h-[50px] text-black"
-                />
+      {publicKey ? (
+        <Center>
+          <Paper shadow="xl" p="xl" withBorder>
+            <Flex
+              mih={50}
+              gap="xl"
+              justify="center"
+              align="center"
+              direction="row"
+              wrap="nowrap"
+            >
+              <Avatar
+                size={44}
+                radius={33}
+                src={deso.user.getSingleProfilePicture(publicKey)}
+              />
+              <TextInput
+                variant="unstyled"
+                placeholder="Let them hear your voice!"
+                radius="md"
+                size="xl"
+                value={create}
+                onChange={(e) => {
+                  setPost(e.target.value);
+                }}
+                className="ml-2 min-w-[400px] min-h-[50px] text-black"
+              />
 
-                <Space h="md" />
-                <Group position="right">
+              <Space h="md" />
+              <Group position="right">
+                <Button
+                  variant="outline"
+                  onClick={async () => {
+                    if (!create) {
+                      console.log("Create state is empty, cannot submit post.");
+                      return;
+                    }
+                    try {
+                      await deso.posts.submitPost({
+                        UpdaterPublicKeyBase58Check: publicKey,
+                        BodyObj: {
+                          Body: create,
+                          VideoURLs: [],
+                          ImageURLs: [],
+                        },
+                      });
+                      setPost("");
+                      console.log("Post submitted successfully!");
+                    } catch (error) {
+                      console.log("Error submitting post: ", error);
+                    }
+                  }}
+                >
+                  Create
+                </Button>
+              </Group>
+            </Flex>
+          </Paper>
+        </Center>
+      ) : (
+        <Center>
+          <Paper shadow="xl" p="xl" withBorder>
+            <Flex
+              mih={50}
+              gap="xl"
+              justify="center"
+              align="center"
+              direction="row"
+              wrap="nowrap"
+            >
+              <Avatar size={44} radius={33} />
+              <TextInput
+                variant="unstyled"
+                placeholder="Let them hear your voice!"
+                radius="md"
+                size="xl"
+                className="ml-2 min-w-[400px] min-h-[50px] text-black"
+              />
+
+              <Space h="md" />
+              <Group position="right">
+                <Tooltip
+                  transition="slide-up"
+                  transitionDuration={444}
+                  label="Login to Create!"
+                >
                   <Button
-                    variant="outline"
-                    onClick={async () => {
-                      if (!create) {
-                        console.log(
-                          "Create state is empty, cannot submit post."
-                        );
-                        return;
-                      }
-                      try {
-                        await deso.posts.submitPost({
-                          UpdaterPublicKeyBase58Check: publicKey,
-                          BodyObj: {
-                            Body: create,
-                            VideoURLs: [],
-                            ImageURLs: [],
-                          },
-                        });
-                        setPost("");
-                        console.log("Post submitted successfully!");
-                      } catch (error) {
-                        console.log("Error submitting post: ", error);
-                      }
-                    }}
+                    data-disabled
+                    sx={{ "&[data-disabled]": { pointerEvents: "all" } }}
+                    onClick={(event) => event.preventDefault()}
                   >
                     Create
                   </Button>
-                </Group>
-              </Flex>
-            </Paper>
-          </Group>
-        ) : (
-          <Center>
-            <Paper shadow="xl" p="xl" withBorder>
-              <Flex
-                mih={50}
-                gap="xl"
-                justify="center"
-                align="center"
-                direction="row"
-                wrap="nowrap"
-              >
-                <Avatar size={44} radius={33} />
-                <TextInput
-                  variant="unstyled"
-                  placeholder="Let them hear your voice!"
-                  radius="md"
-                  size="xl"
-                  className="ml-2 min-w-[400px] min-h-[50px] text-black"
-                />
+                </Tooltip>
+              </Group>
+            </Flex>
+          </Paper>
+        </Center>
+      )}
 
-                <Space h="md" />
-                <Group position="right">
-                  <Tooltip
-                    transition="slide-up"
-                    transitionDuration={444}
-                    label="Login to Create!"
-                  >
-                    <Button
-                      data-disabled
-                      sx={{ "&[data-disabled]": { pointerEvents: "all" } }}
-                      onClick={(event) => event.preventDefault()}
-                    >
-                      Create
-                    </Button>
-                  </Tooltip>
-                </Group>
-              </Flex>
-            </Paper>
-          </Center>
-        )}
-      </Group>
       <Space h="md" />
 
       {feed.map((post, index) => (
@@ -217,8 +214,8 @@ export default function Home() {
                     label={copied ? "Copied Public Key" : "Copy Public Key"}
                     withArrow
                     position="right"
-                    transitionDuration={444}
-                    transition="slide-right"
+                    transitionDuration={333}
+                    transition="scale-x"
                   >
                     <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
                       {copied ? (
