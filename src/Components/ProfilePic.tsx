@@ -64,9 +64,13 @@ const FollowerDisplay = ({ followers, following }: FollowerInfo) => {
   return (
     <>
       <Center>
-        <Text>{followers && `Following: ${following.NumFollowers}`}</Text>
+        <Text fz="sm">
+          {followers && `Following: ${following.NumFollowers}`}
+        </Text>
         <Space w="sm" />
-        <Text>{followers && ` Followers: ${followers.NumFollowers}`}</Text>
+        <Text fz="sm">
+          {followers && ` Followers: ${followers.NumFollowers}`}
+        </Text>
       </Center>
     </>
   );
