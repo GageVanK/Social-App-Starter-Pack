@@ -111,6 +111,7 @@ export default function MantineHeader() {
         <Group position="apart" sx={{ height: "100%" }}>
           <Group>
             <Space w="sm" />
+
             <Text
               component={Link}
               to="/"
@@ -124,6 +125,7 @@ export default function MantineHeader() {
             sx={{ height: "100%" }}
             spacing={0}
             className={classes.hiddenMobile}
+            position="center"
           >
             <Autocomplete
               className={classes.search}
@@ -131,11 +133,11 @@ export default function MantineHeader() {
               icon={<IconSearch size={16} stroke={1.5} />}
               data={["Waves"]}
             />
+            <Space w="sm" />
+            <MantineThemeButton />
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <MantineThemeButton />
-
             {publicKey ? (
               <Button
                 variant="default"
@@ -159,6 +161,17 @@ export default function MantineHeader() {
                 Login
               </Button>
             )}
+            <Button
+              variant="gradient"
+              gradient={{ from: "cyan", to: "indigo" }}
+              onClick={async () => {
+                await deso.identity.login(2);
+                const loggedInUserKey = deso.identity.getUserKey();
+                setPublicKey(loggedInUserKey);
+              }}
+            >
+              Sign Up
+            </Button>
           </Group>
 
           <Burger
@@ -184,6 +197,9 @@ export default function MantineHeader() {
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
 
+          <Group position="center">
+            <MantineThemeButton />
+          </Group>
           <Link to="/" className={classes.link}>
             <IconHome2 className={classes.linkIcon} />
             <Text sx={{ marginLeft: 10 }} align="center">
@@ -216,7 +232,18 @@ export default function MantineHeader() {
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <MantineThemeButton />
+            <Button
+              variant="gradient"
+              gradient={{ from: "cyan", to: "indigo" }}
+              onClick={async () => {
+                await deso.identity.login(2);
+                const loggedInUserKey = deso.identity.getUserKey();
+                setPublicKey(loggedInUserKey);
+              }}
+            >
+              Sign Up
+            </Button>
+
             {publicKey ? (
               <Button
                 variant="default"
