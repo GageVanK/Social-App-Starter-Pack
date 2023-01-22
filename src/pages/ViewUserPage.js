@@ -15,6 +15,7 @@ import {
   createStyles,
   TypographyStylesProvider,
   Image,
+  Button,
 } from "@mantine/core";
 import {
   IconCheck,
@@ -128,6 +129,15 @@ export default function ViewUserPage() {
             <Space w="sm" />
             <Text fz="sm">Followers: {followerCount}</Text>
           </Center>
+          <Space h="md" />
+          <Button
+            fullWidth
+            variant="gradient"
+            gradient={{ from: "cyan", to: "indigo" }}
+            radius="md"
+          >
+            Follow
+          </Button>
         </Paper>
       </Center>
 
