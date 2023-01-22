@@ -56,7 +56,6 @@ export default function ViewUserPage() {
   const { classes } = useStyles();
   const location = useLocation();
   const { userPublicKey, userName, userProfilePic } = location.state;
-  console.log({ userPublicKey });
 
   const GetProfileInfo = async () => {
     //Follower Count for User

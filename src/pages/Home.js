@@ -77,7 +77,6 @@ export default function Home() {
       console.log("No response from the server");
     }
     setFeed(response.PostsFound);
-    console.log(response.PostsFound);
   };
 
   return (
