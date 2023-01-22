@@ -41,9 +41,14 @@ export default function Profile() {
       <Space h="md" />
       <Paper shadow="xl" radius="sm" p="md" withBorder align="center">
         <form onSubmit={handleSubmit}>
+          <Text align="center" fw={500}>
+            Watch Something On Twitch
+          </Text>
+          <Space h="sm" />
           <Center>
             <TextInput
-              placeholder="Enter Twitch Username"
+              placeholder="Enter Twitch User"
+              size="md"
               radius="xl"
               type="text"
             />
@@ -145,8 +150,6 @@ export default function Profile() {
             </Text>
           </Center>
         </Paper>
-        
-        
       )}
     </>
   );
