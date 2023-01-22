@@ -22,7 +22,6 @@ export const Posts = ({ publicKey }: ProfilePostsProps) => {
     ));
     if (posts) {
       setPosts(posts);
-      console.log(posts);
     }
   };
   return <div>{posts}</div>;
