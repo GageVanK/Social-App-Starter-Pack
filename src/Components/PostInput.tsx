@@ -30,7 +30,6 @@ const PostInput = () => {
         <Button
           variant="outline"
           onClick={async () => {
-            console.log(post);
             if (!post) {
               return;
             }
