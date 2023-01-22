@@ -28,7 +28,10 @@ import {
   IconCheck,
 } from "@tabler/icons";
 import { useRecoilValue } from "recoil";
+import { Link, Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router";
 
+import ViewUserPage from "./ViewUserPage";
 const deso = new Deso();
 
 const useStyles = createStyles((theme) => ({
@@ -52,6 +55,7 @@ const useStyles = createStyles((theme) => ({
 export default function Home() {
   const [create, setPost] = useState("");
   const [feed, setFeed] = useState([]);
+  const navigate = useNavigate();
 
   const publicKey = useRecoilValue(PublicKey);
   const { classes } = useStyles();
@@ -192,26 +196,18 @@ export default function Home() {
             className={classes.comment}
             key={index}
           >
-            <Group>
-              <Space w="xs" />
-              <Avatar
-                size={44}
-                radius={33}
-                src={deso.user.getSingleProfilePicture(
-                  post.PosterPublicKeyBase58Check
-                )}
-              />
-
-              <Text weight="bold" size="sm">
-                {_.get(post, "ProfileEntryResponse.Username", "anon")}
-              </Text>
+            <Group w={"100%"} position="right">
               <CopyButton
                 value={post.PosterPublicKeyBase58Check}
                 timeout={2000}
               >
                 {({ copied, copy }) => (
                   <Tooltip
-                    label={copied ? "Copied Public Key" : "Copy Public Key"}
+                    label={
+                      copied
+                        ? "Copied User's Public Key"
+                        : "Copy User's Public Key"
+                    }
                     withArrow
                     position="right"
                     transitionDuration={333}
@@ -229,11 +225,49 @@ export default function Home() {
               </CopyButton>
             </Group>
 
-            <TypographyStylesProvider>
-              <Text align="center" size="md" className={classes.body}>
-                {post.Body}
-              </Text>
-            </TypographyStylesProvider>
+            <Group position="center">
+              <Space w="xs" />
+
+              <ActionIcon
+                onClick={() =>
+                  navigate(`/profile/${post.ProfileEntryResponse.Username}`, {
+                    state: {
+                      userPublicKey: post.PosterPublicKeyBase58Check,
+                      userName: post.ProfileEntryResponse.Username,
+                      userProfilePic: deso.user.getSingleProfilePicture(
+                        post.PosterPublicKeyBase58Check
+                      ),
+                    },
+                  })
+                }
+                variant="transparent"
+              >
+                <Avatar
+                  size={55}
+                  radius={33}
+                  src={deso.user.getSingleProfilePicture(
+                    post.PosterPublicKeyBase58Check
+                  )}
+                />
+                <Space w="xs" />
+                <Text weight="bold" size="sm">
+                  {_.get(post, "ProfileEntryResponse.Username", "anon")}
+                </Text>
+              </ActionIcon>
+            </Group>
+            <Space h="md" />
+            <Group position="center" width={"100%"}>
+              <TypographyStylesProvider>
+                <Text
+                  width={"100%"}
+                  align="center"
+                  size="md"
+                  className={classes.body}
+                >
+                  {post.Body}
+                </Text>
+              </TypographyStylesProvider>
+            </Group>
             <Space h="md" />
             {post.ImageURLs && (
               <Center>

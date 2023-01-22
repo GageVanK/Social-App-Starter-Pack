@@ -8,6 +8,7 @@ import Discover from "../pages/Discover";
 import Home from "../pages/Home";
 import Messages from "../pages/Messages";
 import Settings from "../pages/Settings";
+import ViewUserPage from "../pages/ViewUserPage";
 import { AppShell, useMantineTheme } from "@mantine/core";
 
 import MantineHeader from "../Components/MantineHeader";
@@ -37,7 +38,8 @@ export default function MantineShell() {
     >
       <Routes>
         <Route path="/settings" element={<Settings />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/" element={<Profile />} />
+        <Route path="/profile/:user" element={<ViewUserPage />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/discover" element={<Discover />} />
