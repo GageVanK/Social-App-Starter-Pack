@@ -4,16 +4,18 @@ import {
   Divider,
   Text,
   Space,
+  useMantineTheme,
   Title,
-  
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { TwitchPlayer } from "react-twitch-embed";
 import { useRef } from "react";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function Discover() {
+  const theme = useMantineTheme();
   const embed = useRef(); // We use a ref instead of state to avoid rerenders.
-
+  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
   const handleReady = (e) => {
     embed.current = e;
   };
@@ -53,12 +55,14 @@ export default function Discover() {
         variant="dashed"
       />
       <Carousel
-        align="start"
-        controlSize={33}
         loop
-        draggable={false}
-        withIndicators
+        slideSize="50%"
+        breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 2 }]}
+        slideGap="xl"
+        align="start"
+        slidesToScroll={mobile ? 1 : 2}
       >
+        >
         <Carousel.Slide>
           <Center>
             <Paper shadow="xl" radius="md" p="xs">
@@ -69,11 +73,11 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                Marved
+                Subroza
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="Marved6"
+                channel="Subroza"
                 width={333}
                 muted
                 onReady={handleReady}
@@ -98,6 +102,7 @@ export default function Discover() {
               <TwitchPlayer
                 channel="Hiko"
                 width={333}
+                autoplay={false}
                 muted
                 onReady={handleReady}
                 id="2"
@@ -120,7 +125,7 @@ export default function Discover() {
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
                 channel="a2guapo"
-                autoplay
+                autoplay={false}
                 muted
                 width={333}
                 onReady={handleReady}
@@ -144,6 +149,7 @@ export default function Discover() {
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
                 channel="ploo"
+                autoplay={false}
                 width={333}
                 muted
                 onReady={handleReady}
@@ -171,6 +177,7 @@ export default function Discover() {
                 muted
                 onReady={handleReady}
                 id="5"
+                autoplay={false}
               />
             </Paper>
           </Center>
@@ -199,11 +206,12 @@ export default function Discover() {
         variant="dashed"
       />
       <Carousel
-        align="start"
-        controlSize={33}
         loop
-        draggable={false}
-        withIndicators
+        slideSize="50%"
+        breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 2 }]}
+        slideGap="xl"
+        align="start"
+        slidesToScroll={mobile ? 1 : 2}
       >
         <Carousel.Slide>
           <Center>
@@ -244,6 +252,7 @@ export default function Discover() {
               <TwitchPlayer
                 channel="officedrummer"
                 width={333}
+                autoplay={false}
                 muted
                 onReady={handleReady}
                 id="7"
@@ -266,7 +275,7 @@ export default function Discover() {
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
                 channel="KendraLyssa"
-                autoplay
+                autoplay={false}
                 muted
                 width={333}
                 onReady={handleReady}
@@ -291,6 +300,7 @@ export default function Discover() {
               <TwitchPlayer
                 channel="kennybeats"
                 width={333}
+                autoplay={false}
                 muted
                 onReady={handleReady}
                 id="9"
@@ -314,6 +324,7 @@ export default function Discover() {
               <TwitchPlayer
                 channel="claremeans"
                 width={333}
+                autoplay={false}
                 muted
                 onReady={handleReady}
                 id="10"
@@ -345,11 +356,12 @@ export default function Discover() {
         variant="dashed"
       />
       <Carousel
-        align="start"
-        controlSize={33}
         loop
-        draggable={false}
-        withIndicators
+        slideSize="50%"
+        breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: 2 }]}
+        slideGap="xl"
+        align="start"
+        slidesToScroll={mobile ? 1 : 2}
       >
         <Carousel.Slide>
           <Center>
@@ -390,6 +402,7 @@ export default function Discover() {
               <TwitchPlayer
                 channel="BadChessGoodVibes"
                 width={333}
+                autoplay={false}
                 muted
                 onReady={handleReady}
                 id="12"
@@ -412,7 +425,7 @@ export default function Discover() {
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
                 channel="zefCatt"
-                autoplay
+                autoplay={false}
                 muted
                 width={333}
                 onReady={handleReady}
@@ -437,6 +450,7 @@ export default function Discover() {
               <TwitchPlayer
                 channel="CyberBunnyB"
                 width={333}
+                autoplay={false}
                 muted
                 onReady={handleReady}
                 id="14"
@@ -459,6 +473,7 @@ export default function Discover() {
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
                 channel="Megasnoop"
+                autoplay={false}
                 width={333}
                 muted
                 onReady={handleReady}
