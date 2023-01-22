@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import Deso from "deso-protocol";
 import { useEffect, useState } from "react";
+import { postFilter } from "../utils";
 import {
   Avatar,
   Text,
@@ -46,6 +47,7 @@ const useStyles = createStyles((theme) => ({
 export default function ViewUserPage() {
   useEffect(() => {
     GetProfileInfo();
+    // eslint-disable-next-line
   }, []);
   const [userPosts, setUserPosts] = useState([]);
   const [followerCount, setFollowerCount] = useState();
@@ -129,7 +131,7 @@ export default function ViewUserPage() {
         </Paper>
       </Center>
 
-      {userPosts.map((post) => (
+      {userPosts.filter(postFilter).map((post) => (
         <div key={post.PostId}>
           <Center>
             <Paper
