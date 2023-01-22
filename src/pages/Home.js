@@ -28,10 +28,9 @@ import {
   IconCheck,
 } from "@tabler/icons";
 import { useRecoilValue } from "recoil";
-import { Link, Route, Routes } from "react-router-dom";
+
 import { useNavigate } from "react-router";
 
-import ViewUserPage from "./ViewUserPage";
 const deso = new Deso();
 
 const useStyles = createStyles((theme) => ({
