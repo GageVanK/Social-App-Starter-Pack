@@ -88,7 +88,7 @@ export default function Profile() {
               withArrow
               position="bottom"
               label="Like"
-              transitionDuration={444}
+              transitionDuration={11}
             >
               <ActionIcon variant="subtle" radius="md" size={36}>
                 <IconHeart size={18} stroke={1.5} />
@@ -105,7 +105,7 @@ export default function Profile() {
               withArrow
               position="bottom"
               label="Repost"
-              transitionDuration={444}
+              transitionDuration={11}
             >
               <ActionIcon variant="subtle" radius="md" size={36}>
                 <IconRecycle size={18} stroke={1.5} />
@@ -122,7 +122,7 @@ export default function Profile() {
               withArrow
               position="bottom"
               label="Diamonds"
-              transitionDuration={444}
+              transitionDuration={11}
             >
               <ActionIcon variant="subtle" radius="md" size={36}>
                 <IconDiamond size={18} stroke={1.5} />
@@ -139,7 +139,7 @@ export default function Profile() {
               withArrow
               position="bottom"
               label="Comments"
-              transitionDuration={444}
+              transitionDuration={11}
             >
               <ActionIcon variant="subtle" radius="md" size={36}>
                 <IconMessageCircle size={18} stroke={1.5} />
