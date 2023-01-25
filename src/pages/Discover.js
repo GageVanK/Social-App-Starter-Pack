@@ -73,11 +73,11 @@ export default function Discover() {
                 variant="gradient"
                 gradient={{ from: "indigo", to: "cyan", deg: 45 }}
               >
-                Subroza
+                zrendez
               </Text>
               <Divider my="sm" variant="dotted" />
               <TwitchPlayer
-                channel="Subroza"
+                channel="zrendez"
                 width={333}
                 muted
                 onReady={handleReady}

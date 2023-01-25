@@ -54,6 +54,7 @@ const useStyles = createStyles((theme) => ({
 export default function Home() {
   const [create, setPost] = useState("");
   const [feed, setFeed] = useState([]);
+
   const navigate = useNavigate();
 
   const publicKey = useRecoilValue(PublicKey);
@@ -180,9 +181,7 @@ export default function Home() {
           </Paper>
         </Center>
       )}
-
       <Space h="md" />
-
       {feed.map((post, index) => (
         <Group position="center">
           <Paper
@@ -208,7 +207,7 @@ export default function Home() {
                     }
                     withArrow
                     position="right"
-                    transitionDuration={333}
+                    transitionDuration={11}
                     transition="scale-x"
                   >
                     <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
@@ -285,7 +284,7 @@ export default function Home() {
                 withArrow
                 position="bottom"
                 label="Like"
-                transitionDuration={444}
+                transitionDuration={11}
               >
                 <ActionIcon variant="subtle" radius="md" size={36}>
                   <IconHeart size={18} stroke={1.5} />
@@ -300,7 +299,7 @@ export default function Home() {
                 withArrow
                 position="bottom"
                 label="Repost"
-                transitionDuration={444}
+                transitionDuration={11}
               >
                 <ActionIcon variant="subtle" radius="md" size={36}>
                   <IconRecycle size={18} stroke={1.5} />
@@ -315,7 +314,7 @@ export default function Home() {
                 withArrow
                 position="bottom"
                 label="Diamonds"
-                transitionDuration={444}
+                transitionDuration={11}
               >
                 <ActionIcon variant="subtle" radius="md" size={36}>
                   <IconDiamond size={18} stroke={1.5} />
@@ -332,7 +331,7 @@ export default function Home() {
                 withArrow
                 position="bottom"
                 label="Comments"
-                transitionDuration={444}
+                transitionDuration={11}
               >
                 <ActionIcon variant="subtle" radius="md" size={36}>
                   <IconMessageCircle size={18} stroke={1.5} />
