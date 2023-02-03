@@ -1,4 +1,4 @@
-import MantineShell from "./Components/MantineShell";
+import MantineShell from "./Components/MantineUI/MantineShell";
 import { useState } from "react";
 import {
   MantineProvider,
