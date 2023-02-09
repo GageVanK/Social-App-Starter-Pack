@@ -19,7 +19,7 @@ import {
 } from "@mantine/core";
 import {
   IconCheck,
-  IconCopy,
+  IconKey,
   IconHeart,
   IconDiamond,
   IconRecycle,
@@ -107,11 +107,11 @@ export default function ViewUserPage() {
                 label={copied ? "Copied Public Key" : "Copy Public Key"}
                 withArrow
                 position="right"
-                transitionDuration={333}
+                transitionDuration={11}
                 transition="scale-x"
               >
                 <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
-                  {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
+                  {copied ? <IconCheck size={14} /> : <IconKey size={14} />}
                 </ActionIcon>
               </Tooltip>
             )}
