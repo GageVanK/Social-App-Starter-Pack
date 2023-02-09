@@ -1,6 +1,7 @@
 import Deso from "deso-protocol";
 import { useEffect, useState } from "react";
 import { PublicKey } from "../State/App.state";
+import { HomePageBanner } from "../Components/HomePageBanner";
 import _ from "lodash";
 import {
   Text,
@@ -24,7 +25,7 @@ import {
   IconDiamond,
   IconRecycle,
   IconMessageCircle,
-  IconCopy,
+  IconKey,
   IconCheck,
 } from "@tabler/icons";
 import { useRecoilValue } from "recoil";
@@ -82,6 +83,7 @@ export default function Home() {
 
   return (
     <>
+      <Space h="md" />
       {publicKey ? (
         <Center>
           <Paper shadow="xl" p="xl" withBorder>
@@ -165,7 +167,7 @@ export default function Home() {
               <Group position="right">
                 <Tooltip
                   transition="slide-up"
-                  transitionDuration={444}
+                  transitionDuration={11}
                   label="Login to Create!"
                 >
                   <Button
@@ -181,6 +183,8 @@ export default function Home() {
           </Paper>
         </Center>
       )}
+      <Space h="md" />
+      <HomePageBanner />
       <Space h="md" />
       {feed.map((post, index) => (
         <Group position="center">
@@ -211,11 +215,7 @@ export default function Home() {
                     transition="scale-x"
                   >
                     <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
-                      {copied ? (
-                        <IconCheck size={14} />
-                      ) : (
-                        <IconCopy size={14} />
-                      )}
+                      {copied ? <IconCheck size={14} /> : <IconKey size={14} />}
                     </ActionIcon>
                   </Tooltip>
                 )}
