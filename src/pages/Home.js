@@ -197,7 +197,7 @@ export default function Home() {
             className={classes.comment}
             key={index}
           >
-            <Group w={"100%"} position="right">
+            <Group w={"100%"} position="left">
               <CopyButton
                 value={post.PosterPublicKeyBase58Check}
                 timeout={2000}
@@ -240,7 +240,7 @@ export default function Home() {
                 variant="transparent"
               >
                 <Avatar
-                  size={55}
+                  size={44}
                   radius={33}
                   src={deso.user.getSingleProfilePicture(
                     post.PosterPublicKeyBase58Check

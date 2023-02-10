@@ -9,7 +9,7 @@ import {
   ActionIcon,
   Tooltip,
 } from "@mantine/core";
-import { IconCheck, IconCopy } from "@tabler/icons";
+import { IconCheck, IconKey } from "@tabler/icons";
 import { PublicKey } from "../../State/App.state";
 import { useRecoilValue } from "recoil";
 import { ProfilePic } from "../../Components/ProfilePic";
@@ -43,11 +43,11 @@ export const ProfileCard = () => {
                   label={copied ? "Copied Public Key" : "Copy Public Key"}
                   withArrow
                   position="right"
-                  transitionDuration={333}
+                  transitionDuration={11}
                   transition="scale-x"
                 >
                   <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
-                    {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
+                    {copied ? <IconCheck size={14} /> : <IconKey size={14} />}
                   </ActionIcon>
                 </Tooltip>
               )}

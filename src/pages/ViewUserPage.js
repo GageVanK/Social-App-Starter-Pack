@@ -151,14 +151,15 @@ export default function ViewUserPage() {
               withBorder
               className={classes.comment}
             >
-              <Group>
+              <Center>
+                <Avatar size={44} radius={33} src={userProfilePic} />
                 <Space w="xs" />
-                <Avatar size={33} radius={33} src={userProfilePic} />
                 <Text weight="bold" size="sm">
                   {userName}
                 </Text>
-              </Group>
+              </Center>
 
+              <Space h="md" />
               <TypographyStylesProvider>
                 <Text align="center" size="md" className={classes.body}>
                   {post.Body}
@@ -186,7 +187,7 @@ export default function ViewUserPage() {
                   withArrow
                   position="bottom"
                   label="Like"
-                  transitionDuration={444}
+                  transitionDuration={11}
                 >
                   <ActionIcon variant="subtle" radius="md" size={36}>
                     <IconHeart size={18} stroke={1.5} />
@@ -203,7 +204,7 @@ export default function ViewUserPage() {
                   withArrow
                   position="bottom"
                   label="Repost"
-                  transitionDuration={444}
+                  transitionDuration={11}
                 >
                   <ActionIcon variant="subtle" radius="md" size={36}>
                     <IconRecycle size={18} stroke={1.5} />
@@ -220,7 +221,7 @@ export default function ViewUserPage() {
                   withArrow
                   position="bottom"
                   label="Diamonds"
-                  transitionDuration={444}
+                  transitionDuration={11}
                 >
                   <ActionIcon variant="subtle" radius="md" size={36}>
                     <IconDiamond size={18} stroke={1.5} />
@@ -237,7 +238,7 @@ export default function ViewUserPage() {
                   withArrow
                   position="bottom"
                   label="Comments"
-                  transitionDuration={444}
+                  transitionDuration={11}
                 >
                   <ActionIcon variant="subtle" radius="md" size={36}>
                     <IconMessageCircle size={18} stroke={1.5} />
