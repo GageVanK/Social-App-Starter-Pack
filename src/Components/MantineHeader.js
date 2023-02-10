@@ -129,7 +129,7 @@ export default function MantineHeader() {
           >
             <Autocomplete
               className={classes.search}
-              placeholder="Search"
+              placeholder="Search by PublicKey"
               icon={<IconSearch size={16} stroke={1.5} />}
               data={["Waves"]}
             />

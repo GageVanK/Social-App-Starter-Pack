@@ -72,15 +72,16 @@ export const PostsTemplate = ({ post, publicKey }: PostTemplateProps) => {
         withBorder
         className={classes.comment}
       >
-        <Group>
+        <Center>
+          <Avatar size={44} radius={33} src={pic} />
           <Space w="xs" />
-          <Avatar size={33} radius={33} src={pic} />
           <Text weight="bold" size="sm">
             {username}
           </Text>
-        </Group>
+        </Center>
 
         <TypographyStylesProvider>
+          <Space h="sm" />
           <Text align="center" size="md" className={classes.body}>
             {post.Body}
           </Text>
@@ -107,7 +108,7 @@ export const PostsTemplate = ({ post, publicKey }: PostTemplateProps) => {
             withArrow
             position="bottom"
             label="Like"
-            transitionDuration={444}
+            transitionDuration={11}
           >
             <ActionIcon variant="subtle" radius="md" size={36}>
               <IconHeart size={18} stroke={1.5} />
@@ -124,7 +125,7 @@ export const PostsTemplate = ({ post, publicKey }: PostTemplateProps) => {
             withArrow
             position="bottom"
             label="Repost"
-            transitionDuration={444}
+            transitionDuration={11}
           >
             <ActionIcon variant="subtle" radius="md" size={36}>
               <IconRecycle size={18} stroke={1.5} />
@@ -141,7 +142,7 @@ export const PostsTemplate = ({ post, publicKey }: PostTemplateProps) => {
             withArrow
             position="bottom"
             label="Diamonds"
-            transitionDuration={444}
+            transitionDuration={11}
           >
             <ActionIcon variant="subtle" radius="md" size={36}>
               <IconDiamond size={18} stroke={1.5} />
@@ -158,7 +159,7 @@ export const PostsTemplate = ({ post, publicKey }: PostTemplateProps) => {
             withArrow
             position="bottom"
             label="Comments"
-            transitionDuration={444}
+            transitionDuration={11}
           >
             <ActionIcon variant="subtle" radius="md" size={36}>
               <IconMessageCircle size={18} stroke={1.5} />
