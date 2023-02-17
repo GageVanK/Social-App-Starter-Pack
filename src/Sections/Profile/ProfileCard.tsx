@@ -65,7 +65,7 @@ export const ProfileCard = () => {
               variant="gradient"
               gradient={{ from: "indigo", to: "cyan", deg: 45 }}
             >
-              Please login to view your Profile.
+              Please login to view your Profile and Stream.
             </Text>
 
             <Space h="xl" />

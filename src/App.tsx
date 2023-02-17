@@ -5,7 +5,18 @@ import {
   ColorSchemeProvider,
   ColorScheme,
 } from "@mantine/core";
+import {
+  LivepeerConfig,
+  createReactClient,
+  studioProvider,
+} from "@livepeer/react";
 import { BrowserRouter } from "react-router-dom";
+
+const livepeerClient = createReactClient({
+  provider: studioProvider({
+    apiKey: "306f0789-aff0-4ac5-890f-eac0dccf3bcc",
+  }),
+});
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
@@ -13,20 +24,22 @@ function App() {
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 
   return (
-    <BrowserRouter>
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
-      >
-        <MantineProvider
-          theme={{ colorScheme }}
-          withGlobalStyles
-          withNormalizeCSS
+    <LivepeerConfig client={livepeerClient}>
+      <BrowserRouter>
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
         >
-          <MantineShell></MantineShell>
-        </MantineProvider>
-      </ColorSchemeProvider>
-    </BrowserRouter>
+          <MantineProvider
+            theme={{ colorScheme }}
+            withGlobalStyles
+            withNormalizeCSS
+          >
+            <MantineShell></MantineShell>
+          </MantineProvider>
+        </ColorSchemeProvider>
+      </BrowserRouter>
+    </LivepeerConfig>
   );
 }
 

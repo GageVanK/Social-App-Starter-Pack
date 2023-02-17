@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@livepeer/react": "^2.2.3",
     "@mantine/carousel": "^5.10.1",
     "@mantine/core": "^5.10.0",
     "@mantine/hooks": "^5.10.1",
