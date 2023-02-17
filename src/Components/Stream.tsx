@@ -13,7 +13,6 @@ import {
   CopyButton,
   ActionIcon,
   Tooltip,
-  Divider,
   Card,
 } from "@mantine/core";
 import { IconCopy, IconCheck } from "@tabler/icons";
