@@ -2,13 +2,11 @@ import { ProfileCard } from "../Sections/Profile/ProfileCard";
 import { useRecoilValue } from "recoil";
 import { PublicKey } from "../State/App.state";
 import { Posts } from "../Sections/Posts/Posts";
-import { TwitchEmbed } from "react-twitch-embed";
+
 import { Stream } from "../Components/Stream";
 import {
   Paper,
   Space,
-  TextInput,
-  Button,
   Center,
   Skeleton,
   Tooltip,
