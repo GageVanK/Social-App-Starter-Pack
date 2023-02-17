@@ -13,7 +13,7 @@ import {
   Text,
   ActionIcon,
 } from "@mantine/core";
-import { useState } from "react";
+
 import {
   IconHeart,
   IconDiamond,
