@@ -14,7 +14,7 @@ import {
   Space,
   ActionIcon,
   Tooltip,
-  TextInput,
+  Textarea,
   Button,
   Image,
   Flex,
@@ -53,7 +53,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function Home() {
-  const [create, setPost] = useState("");
+  const [body, setBody] = useState("");
   const [feed, setFeed] = useState([]);
 
   const navigate = useNavigate();
@@ -100,16 +100,17 @@ export default function Home() {
                 radius={33}
                 src={deso.user.getSingleProfilePicture(publicKey)}
               />
-              <TextInput
+              <Textarea
                 variant="unstyled"
+                autosize
+                minRows={2}
+                maxRows={4}
                 placeholder="Let them hear your voice!"
                 radius="md"
                 size="xl"
-                value={create}
-                onChange={(e) => {
-                  setPost(e.target.value);
+                onChange={async (e) => {
+                  e.preventDefault();
                 }}
-                className="ml-2 min-w-[400px] min-h-[50px] text-black"
               />
 
               <Space h="md" />
@@ -117,7 +118,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   onClick={async () => {
-                    if (!create) {
+                    if (!body) {
                       console.log("Create state is empty, cannot submit post.");
                       return;
                     }
@@ -125,12 +126,12 @@ export default function Home() {
                       await deso.posts.submitPost({
                         UpdaterPublicKeyBase58Check: publicKey,
                         BodyObj: {
-                          Body: create,
+                          Body: body,
                           VideoURLs: [],
                           ImageURLs: [],
                         },
                       });
-                      setPost("");
+                      setBody("");
                       console.log("Post submitted successfully!");
                     } catch (error) {
                       console.log("Error submitting post: ", error);
@@ -155,7 +156,10 @@ export default function Home() {
               wrap="nowrap"
             >
               <Avatar size={44} radius={33} />
-              <TextInput
+              <Textarea
+                autosize
+                minRows={2}
+                maxRows={4}
                 variant="unstyled"
                 placeholder="Let them hear your voice!"
                 radius="md"
@@ -173,7 +177,7 @@ export default function Home() {
                   <Button
                     data-disabled
                     sx={{ "&[data-disabled]": { pointerEvents: "all" } }}
-                    onClick={(event) => event.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                   >
                     Create
                   </Button>
